@@ -1,23 +1,26 @@
 import React, { Component, Fragment } from 'react'
 import Tile from './Tile'
+import Box from './Box'
+
 class Board extends Component {
   constructor(props) {
     super(props)
   }
 
-  generateTile() {
+  generateBox() {
     let { onChange, board } = this.props
-    let arrayTiles = []
-    for (let i = 0; i <= 80; i++) {
-      arrayTiles.push(<Tile onChange={onChange} key={i} id={i} value={board[i]} />)
+    let arrayBox = []
+    for (let i = 0; i < board.length; i++) {
+      arrayBox.push(<Box key={i} id={i} tiles={board[i]} onChange={onChange} />)
     }
-    return arrayTiles
+    return arrayBox
   }
+
   render() {
     let { checkGame, correct, getCorrectResult, reset, newGame } = this.props
     return (
       <Fragment>
-        <div className="grid-container">{this.generateTile()}</div>
+        <div className="grid-container">{this.generateBox()}</div>
         <div className="Buttons">
           <button onClick={getCorrectResult}>Uzupełnij</button>
           <button onClick={checkGame}>Sprawdzam</button>

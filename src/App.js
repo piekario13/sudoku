@@ -20,8 +20,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-    let initGamge = sudoku.generate('easy').split('')
+    let initGamge = sudoku.board_string_to_grid(sudoku.generate('easy'))
     let initialBoard = [...initGamge]
+    initialBoard.map((item, index) => {
+      initialBoard[index] = [...item]
+    })
     this.setState({
       initialBoard: initialBoard,
       board: initGamge
@@ -33,7 +36,7 @@ class App extends Component {
     if (event.target.value && event.target.value.length > 1) {
       return
     }
-    board[event.target.dataset.id] = event.target.value
+    board[event.target.dataset.boxId][event.target.dataset.tileId] = event.target.value
     this.setState({
       board: board
     })
@@ -41,28 +44,31 @@ class App extends Component {
 
   checkGame() {
     let { board } = this.state
-    console.log(sudoku.solve(board.join('')))
     this.setState({
-      correct: sudoku.solve(board.join(''))
+      correct: sudoku.solve(sudoku.board_grid_to_string(board))
     })
   }
 
   getCorrectResult() {
     let { initialBoard } = this.state
     this.setState({
-      board: sudoku.solve(initialBoard.join('')).split('')
+      board: sudoku.board_string_to_grid(sudoku.solve(sudoku.board_grid_to_string(initialBoard)))
     })
   }
 
   reset() {
     let { initialBoard } = this.state
+    let boardVal = [...initialBoard]
+    boardVal.map((item, index) => {
+      boardVal[index] = [...item]
+    })
     this.setState({
-      board: initialBoard
+      board: boardVal
     })
   }
 
   newGame() {
-    let init = sudoku.generate('easy').split('')
+    let init = sudoku.board_string_to_grid(sudoku.generate('easy'))
     this.setState({
       initialBoard: init,
       board: init

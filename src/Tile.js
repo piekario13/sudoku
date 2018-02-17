@@ -5,7 +5,7 @@ class Tile extends Component {
     super(props)
   }
   render() {
-    let { onChange, value, id } = this.props
+    let { onChange, value, id, disabled, boxId, tileId } = this.props
     return (
       <Fragment>
         <input
@@ -16,6 +16,9 @@ class Tile extends Component {
           data-id={id}
           value={value}
           maxLength="1"
+          data-box-id={boxId}
+          data-tile-id={tileId}
+          disabled={disabled}
           onChange={onChange}
         />
       </Fragment>
