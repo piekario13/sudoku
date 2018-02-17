@@ -12,7 +12,7 @@ class Tile extends Component {
           className="Tile"
           type="number"
           min="1"
-          max="7"
+          max="9"
           data-id={id}
           value={value}
           maxLength="1"

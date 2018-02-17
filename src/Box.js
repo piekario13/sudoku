@@ -10,16 +10,7 @@ class Box extends Component {
     let { onChange, tiles, id } = this.props
     let arrayTiles = []
     for (let i = 0; i < tiles.length; i++) {
-      arrayTiles.push(
-        <Tile
-          onChange={onChange}
-          key={i}
-          boxId={id}
-          tileId={i}
-          value={tiles[i]}
-          disabled={tiles[i] !== '.' ? true : false}
-        />
-      )
+      arrayTiles.push(<Tile onChange={onChange} key={i} boxId={id} tileId={i} value={tiles[i]} disabled={false} />)
     }
     return arrayTiles
   }

@@ -17,9 +17,11 @@ class Board extends Component {
   }
 
   render() {
-    let { checkGame, correct, getCorrectResult, reset, newGame } = this.props
+    let { checkGame, correct, getCorrectResult, reset, newGame, undo, redo } = this.props
     return (
       <Fragment>
+        <button onClick={undo}>Cofinj</button>
+        <button onClick={redo}>Przywróc</button>
         <div className="grid-container">{this.generateBox()}</div>
         <div className="Buttons">
           <button onClick={getCorrectResult}>Uzupełnij</button>
