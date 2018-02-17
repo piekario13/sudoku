@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  margin: 80px auto;
+  width: 420px;
 }
 
 .App-logo {
@@ -39,6 +40,19 @@
   border: 1px solid rgba(0, 0, 0, 0.8);
   font-size: 30px;
   text-align: center;
+}
+
+.Buttons {
+  margin: 10px 0 24px;
+}
+
+button {
+  margin-right: 5px;
+  border: 0;
+  background-color: silver;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 14px;
 }
 
 @keyframes App-logo-spin {

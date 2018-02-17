@@ -18,12 +18,13 @@ class Board extends Component {
     return (
       <Fragment>
         <div className="grid-container">{this.generateTile()}</div>
-        <button onClick={getCorrectResult}>Uzupełnij</button>
-        <button onClick={checkGame}>Sprawdzam</button>
-        <button onClick={reset}>Reset</button>
-        <button onClick={newGame}>Nowa gra</button>
-
-        {correct ? 'Jest ok' : 'Nie jest ok'}
+        <div className="Buttons">
+          <button onClick={getCorrectResult}>Uzupełnij</button>
+          <button onClick={checkGame}>Sprawdzam</button>
+          <button onClick={reset}>Reset</button>
+          <button onClick={newGame}>Nowa gra</button>
+        </div>
+        <div className="StatusGame">{correct ? 'Jest ok' : 'Nie jest ok'}</div>
       </Fragment>
     )
   }

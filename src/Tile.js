@@ -8,7 +8,16 @@ class Tile extends Component {
     let { onChange, value, id } = this.props
     return (
       <Fragment>
-        <input className="Tile" type="number" min="1" max="9" data-id={id} value={value} onChange={onChange} />
+        <input
+          className="Tile"
+          type="number"
+          min="1"
+          max="7"
+          data-id={id}
+          value={value}
+          maxLength="1"
+          onChange={onChange}
+        />
       </Fragment>
     )
   }
