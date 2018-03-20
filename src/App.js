@@ -4,7 +4,7 @@ import sudoku from 'sudoku-umd'
 import logo from './logo.svg'
 import './App.css'
 import { findLastIndex } from 'lodash/array'
-let cache = []
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -34,31 +34,12 @@ class App extends Component {
   }
 
   undo() {
-    let { board } = this.state
-    let lastBoxId = ''
-    let lastTileId = ''
-    let lastValue = ''
-    let lastValueId = ''
-    console.log(cache)
-    lastBoxId = findLastIndex(cache)
-    lastTileId = findLastIndex(cache[lastBoxId])
-    if (!cache[lastBoxId][lastTileId]) return
-    lastValueId = findLastIndex(cache[lastBoxId][lastTileId])
-    lastValue = cache[lastBoxId][lastTileId][lastValueId]
-    console.log('test: ', cache[lastBoxId][lastTileId])
-    cache[lastBoxId][lastTileId].splice(lastValueId, cache[lastBoxId][lastTileId].length)
-
-    if (!cache[lastBoxId][lastTileId].length) {
-      console.log('test')
-      cache[lastBoxId].splice(lastTileId, cache[lastBoxId].length)
-    }
-    board[lastBoxId][lastTileId] = lastValue
-    this.setState({
-      board: board
-    })
+    console.log('Test undo')
   }
 
-  redo() {}
+  redo() {
+    console.log('Test redo')
+  }
 
   onChange(event) {
     let { board } = this.state
@@ -66,18 +47,6 @@ class App extends Component {
       return
     }
     board[event.target.dataset.boxId][event.target.dataset.tileId] = event.target.value
-
-    cache[event.target.dataset.boxId] = !cache[event.target.dataset.boxId] ? [] : cache[event.target.dataset.boxId]
-    cache[event.target.dataset.boxId][event.target.dataset.tileId] = !cache[event.target.dataset.boxId][
-      event.target.dataset.tileId
-    ]
-      ? []
-      : cache[event.target.dataset.boxId][event.target.dataset.tileId]
-
-    if (event.target.value.length) {
-      cache[event.target.dataset.boxId][event.target.dataset.tileId].push(event.target.value)
-    }
-    console.log(cache)
     this.setState({
       board: board
     })
